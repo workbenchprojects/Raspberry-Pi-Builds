@@ -1,3 +1,5 @@
+''' The code has been written by Rishi Gaurav Bhatanagar (@rishigb) for a #stilllife project (with @justusbruns) , all code written and tested 
+with Pi B/B+, in association with Workbench Projects'''
 import picamera
 import requests
 import time
@@ -13,14 +15,15 @@ def fileName (cur_name,post_name):
         else:
                 print r.status_code
 
-#val = raw_input("Enter the current value of the file with the extension: ")
-#val1 = raw_input ("Please enter the filename you want to keep after posting: ")
-#fileName(val,val1)
-
 ####################################Capturing Image ##########################################################
-nameOfValue = raw_input("Enter the name you want to give the file, with extension: ")
-camera = picamera.PiCamera()
-camera.capture('stilllife.jpg')
-time.sleep(2)
-fileName('stilllife.jpg','stilllife')
+def captureImage(initialName,finalName,timeInterval):
+        camera = picamera.PiCamera()
+        camera.capture(initialName+'.jpg')
+        time.sleep(timeInterval)
+        fileName(initialName+'.jpg',finalName) #This function is going to add the extension to finalName
+'''The image being captured here will be stored in the same folder as the code '''
+
+captureImage("Rishi","maybethis",0.1)
+
+
 
