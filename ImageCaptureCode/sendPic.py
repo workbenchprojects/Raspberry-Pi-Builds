@@ -5,7 +5,10 @@ import requests
 import time
 ''' The following code will be used to send a picture '''
 url_image = 'https://still-life.herokuapp.com/pagemulti'
-
+camera = picamera.PiCamera()
+#camera.resolution = (1920, 1080)
+#camera.resolution = (1087,728)
+camera.resolution = (1280,720) #suits the screens best, 650Kb file.
 ####################################### Image Posting #######################################################
 def fileName (cur_name,post_name):
         files ={post_name:open(cur_name,'rb')}
@@ -17,13 +20,12 @@ def fileName (cur_name,post_name):
 
 ####################################Capturing Image ##########################################################
 def captureImage(initialName,finalName,timeInterval):
-        camera = picamera.PiCamera()
-        camera.capture(initialName+'.jpg')
+        camera.capture(initialName+'.jpeg')
         time.sleep(timeInterval)
-        fileName(initialName+'.jpg',finalName) #This function is going to add the extension to finalName
+        fileName(initialName+'.jpeg',finalName) #This function is going to add the extension to finalName
 '''The image being captured here will be stored in the same folder as the code '''
 
-captureImage("Rishi","maybethis",0.1)
+captureImage("Rishi","maybethis",0.5)
 
 
 
