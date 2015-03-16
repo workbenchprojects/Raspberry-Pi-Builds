@@ -6,9 +6,9 @@ import time
 ''' The following code will be used to send a picture '''
 url_image = 'https://still-life.herokuapp.com/pagemulti'
 camera = picamera.PiCamera()
-#camera.resolution = (1920, 1080)
+camera.resolution = (1920, 1080)
 #camera.resolution = (1087,728)
-camera.resolution = (1280,720) #suits the screens best, 650Kb file.
+#camera.resolution = (1280,720) #suits the screens best, 650Kb file.
 ####################################### Image Posting #######################################################
 def fileName (cur_name,post_name):
         files ={post_name:open(cur_name,'rb')}
