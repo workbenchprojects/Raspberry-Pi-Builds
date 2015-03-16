@@ -17,7 +17,8 @@
             }
             setTimeout(function(){updateImage();}, 10000);
         } */
-
+/*Try removing the image and putting a new one var image_x = document.getElementById('image_X');
+image_x.parentNode.removeChild(image_x); */
         function updateImage() {
             if (newImage.complete) {
                 document.getElementById("imagePlace").src = newImage.src;
