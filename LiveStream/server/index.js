@@ -61,6 +61,7 @@ var io = require('socket.io')(server);
 io.on('connection', function (socket) { 
 console.log("In Socket"); 
 //socket.emit("news",{my:'data'}); //You can send an emit for acknowledgements, etc. 
+io.sockets.emit('liveStream', 'image?_t=' + (Math.random() * 100000));
 startStreaming(io);
 });
 /* Socket watches a file in the folder, and on changes to it, updates the front-end*/
