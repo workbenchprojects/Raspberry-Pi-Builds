@@ -8,7 +8,7 @@ import os
 import math
 import datetime
 ''' The following code will be used to send a picture '''
-url_image = 'https://still-life.herokuapp.com/pagemulti'
+url_image = 'http://localhost:3000/pagemulti'
 camera = picamera.PiCamera()
 #camera.resolution =(640,360)
 camera.sharpness = 5
@@ -37,17 +37,17 @@ def captureImage(initialName,finalName,timeInterval):
 before = datetime.datetime.now() #Current time
 #################Tweet the the image ########################
 ef Tweet():
-        CONSUMER_KEY = '9NS4bQSkSPMV7osKpT3fDZf8J'
-        CONSUMER_SECRET = 'QkWHnxaPFBQYftZOlO1kfcXgQhB7mstVVkvJzKR8GYSLaUsrsA'
-        ACCESS_KEY = '396652210-AiyhB5EuapAJGWKVW9SbMrBvdaTOKSXTSEinujEN'
-        ACCESS_SECRET = 'hwLfmUuasuKQ8AaFhOAgzYBiLTE9W8Ynn5SZAY47oAiaH'
+        CONSUMER_KEY = ''
+        CONSUMER_SECRET = ''
+        ACCESS_KEY = ''
+        ACCESS_SECRET = ''
         auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
         auth.secure = True
         auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
         # access the Twitter API using tweepy with OAuth
         api = tweepy.API(auth)
         #getting the parameter passed via the shell command from the Arduino Sketch
-        status = "Live now from #Bangalore #stilllife"
+        status = "Live now "
         fn = os.path.abspath('Rishi.jpg')
         #UpdateStatus of twitter called with the image file
         api.update_with_media(fn, status=status)
@@ -59,5 +59,5 @@ while True:
         captureImage("Rishi","image_stream",60)
         after = datetime.datetime.now() #New time
 	#Check for time difference in hours, if it is more than 6 hours, click a picture
-        if math.floor(((after - before).seconds) / 3600) >= 6:
+        if math.floor(((after - before).seconds) / 3600) % 6 == 0:
                 Tweet()
