@@ -8,3 +8,7 @@ http://www.instructables.com/id/Raspberry-Pi-Launch-Python-script-on-startup/ste
 
 
 This should do the trick, if you want to run multiple scripts you can use the same logic.
+
+
+Tips:
+Camera exposure ranges between -25 to +25 only. Remember that.
