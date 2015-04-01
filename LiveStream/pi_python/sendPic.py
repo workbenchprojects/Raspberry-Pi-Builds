@@ -1,5 +1,4 @@
-''' The code has been written by Rishi Gaurav Bhatanagar (@rishigb) for a #stilllife project (with @justusbruns) , all code written and tested
-with Pi B/B+, in association with Workbench Projects'''
+
 import picamera
 import requests
 import time
