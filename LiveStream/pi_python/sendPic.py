@@ -25,5 +25,14 @@ def captureImage(initialName,finalName,timeInterval):
         time.sleep(timeInterval)
         fileName(initialName+'.jpg',finalName) #This function is going to add the extension to finalName
 '''The image being captured here will bwe stored in the same folder as the code '''
+######### Pi dies every 3 days for some unknown reason, it freezes and all the processes stop, hence we will restart is in 2 days #######
+def restart():
+    command = "/usr/bin/sudo /sbin/reboot "
+    import subprocess
+    process = subprocess.Popen(command.split(), stdout=subprocess.PIPE)
+    output = process.communicate()[0]
+    print output
+
 while True:
         captureImage("Rishi","image_stream",0.01)
+	#wait for 2 days and call restart()
