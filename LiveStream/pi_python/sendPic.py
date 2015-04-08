@@ -34,5 +34,9 @@ def restart():
     print output
 
 while True:
-        captureImage("Rishi","image_stream",0.01)
-	#wait for 2 days and call restart()
+	try:
+        	captureImage("Rishi","image_stream",0.01)
+		#wait for 2 days and call restart()
+	except Exception,e:
+		print "Exception occoured",e
+		restart()

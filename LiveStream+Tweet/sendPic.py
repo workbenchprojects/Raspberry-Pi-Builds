@@ -10,11 +10,11 @@ import datetime
 ''' The following code will be used to send a picture '''
 url_image = 'http://localhost:3000/pagemulti'
 camera = picamera.PiCamera()
-#camera.resolution =(640,360)
+camera.resolution =(640,360)
 camera.sharpness = 5
 #camera.resolution = (1920, 1080)
 #camera.resolution = (1087,728)
-camera.resolution = (1280,720) #suits the screens best, 650Kb file.
+#camera.resolution = (1280,720) #suits the screens best, 650Kb file.
 camera.crop=(0.1,0.1,0.8,0.8)
 camera.awb_mode ='auto'
 camera.quality = 2
@@ -32,11 +32,12 @@ def captureImage(initialName,finalName,timeInterval):
         camera.capture(initialName+'.jpg')
         time.sleep(timeInterval)
         fileName(initialName+'.jpg',finalName) #This function is going to add the extension to finalName
+	print "clicked"
 '''The image being captured here will be stored in the same folder as the code '''
 ########################## Loop to check the time difference ##############
 before = datetime.datetime.now() #Current time
 #################Tweet the the image ########################
-ef Tweet():
+def Tweet():
         CONSUMER_KEY = ''
         CONSUMER_SECRET = ''
         ACCESS_KEY = ''
@@ -56,8 +57,12 @@ ef Tweet():
 
 
 while True:
-        captureImage("Rishi","image_stream",60)
-        after = datetime.datetime.now() #New time
-	#Check for time difference in hours, if it is more than 6 hours, click a picture
-        if math.floor(((after - before).seconds) / 3600) % 6 == 0:
-                Tweet()
+       
+	try:
+		captureImage("Rishi","image_stream",60)
+        	after = datetime.datetime.now() 
+		Check for time difference in hours, if it is more than 6 hours, click a pictur
+		#Wait for 6 hours and then call Tweet()
+		
+	except Exception,e:
+		print "restart",e
